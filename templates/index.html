@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Works log</h1>
+{% for item in news%}
+<div class="col-md6">
+    <h2>Action # {{item.id}}</h2>
+    <div>
+        {{item.content}}
+    </div>
+    <div>
+        <ul class="list-group list-group-horizontal">
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-secondary">Title of activity</li>
+                    <li class="list-group-item list-group-item-primary">{{item.job}}</li>
+                </ul>
+
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-secondary">Team leader</li>
+                    <li class="list-group-item list-group-item-primary">{{item.team_leader}}</li>
+                </ul>
+
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-secondary">Duration</li>
+                    <li class="list-group-item list-group-item-primary">{{item.work_size}}</li>
+                </ul>
+
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-secondary">List of collaborators</li>
+                    <li class="list-group-item list-group-item-primary">{{item.collaborators}}</li>
+                </ul>
+
+                <ul class="list-group">
+                    <li class="list-group-item list-group-item-secondary">is finished</li>
+                    {% if item.is_finished %}
+                        <li class="list-group-item list-group-item-success">is finished</li>
+                    {% else %}
+                        <li class="list-group-item list-group-item-danger">is not finished</li>
+                    {% endif %}
+                </ul>
+        </ul>
+    </div>
+</div>
+{% endfor %}
+{% endblock %}
